@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const twentyFiveMinutes = 1500;
+  static const twentyFiveMinutes = 5;
   int totalSeconds = twentyFiveMinutes;
   bool isRunning = false;
   int totalPomodoros = 0;
@@ -52,6 +52,12 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       isRunning = false;
       totalSeconds = twentyFiveMinutes;
+    });
+  }
+
+  void onPomodoroReset() {
+    setState(() {
+      totalPomodoros = 0;
     });
   }
 
@@ -107,12 +113,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       alignment: Alignment.topCenter,
                       child: TextButton(
                         onPressed: onResetPressed,
-                        child: Text(
-                          'Reset',
-                          style: TextStyle(
-                            color: Theme.of(context).cardColor,
-                            fontSize: 20,
-                          ),
+                        onLongPress: onPomodoroReset,
+                        child: Column(
+                          children: [
+                            Text(
+                              'Reset',
+                              style: TextStyle(
+                                color: Theme.of(context).cardColor,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              'Long press for pomodoro reset',
+                              style: TextStyle(
+                                color: Theme.of(context).cardColor,
+                                fontSize: 15,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),
