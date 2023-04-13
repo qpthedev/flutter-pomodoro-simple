@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro_simple/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: const Color(0xfff4eddb),
-        body: Container(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          backgroundColor: const Color(0xffe7626c),
+        ),
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            color: Color(0xff232b55),
+          ),
+        ),
+        cardColor: const Color(0xfff4eddb),
       ),
+      home: const HomeScreen(),
     );
   }
 }
